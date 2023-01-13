@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, doc, getDocs, setDoc, query } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,4 +28,22 @@ export const auth = getAuth()
 export const signInAuthUserEmailPassword = async (email, password) => {
    if (!email || !password) return;
    return await signInWithEmailAndPassword(auth, email, password)
+}
+
+export const signOutUser = async () => await signOut(auth)
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
+
+
+export const getUsersClientCollecion =  async (email) => {
+  const clientsInUserRef = collection(db, `Users/${email}/Clients`);
+  const q = query(clientsInUserRef);
+  const ClientsInUserSnapshot = await getDocs(q);
+  const arr = [];
+  ClientsInUserSnapshot.docs.map((d) => {
+    arr.push(d.data());
+  });
+
+  return arr;
+
 }

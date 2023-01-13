@@ -1,0 +1,48 @@
+$mobile: 400px;
+
+$medium: 900px;
+
+  //some CSS
+  @media screen and (max-width: $medium) {
+    
+    .manage-clients{
+        flex-direction:column
+    }
+}
+  @media screen and (min-width: $medium) {
+    .manage-clients{
+        flex-direction:row
+    }
+    .my-clients{
+      width:50%
+    }
+    .add-clients{
+      width:50%
+    }
+  }
+
+
+  .manage-clients{
+    display:flex
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
