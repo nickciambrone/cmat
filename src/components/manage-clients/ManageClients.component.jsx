@@ -13,14 +13,16 @@ import { useNavigate } from "react-router-dom";
 export const ManageClients = (props) => {
   const navigate = useNavigate();
 
+  const [userEmail, setUserEmail] = useState();
+
   const [clients, setClients] = useState([]);
   const { operation } = useParams();
 
   console.log(props.user);
   useEffect(() => {
-    console.log(props.user);
-
     if (props.user) {
+      setUserEmail(props.user.email)    
+
       const tempFunc = async () => {
         const clients = await getUsersClientCollecion(props.user.email);
         console.log(clients);
@@ -33,7 +35,7 @@ export const ManageClients = (props) => {
   return (
     <div className="manage-clients">
       {operation == "myclients" ? (<MyClients clients={clients}/>) : 
-      operation == "addclients" ? (<AddClients />) : (
+      operation == "addclients" ? (<AddClients email = {userEmail}/>) : (
         ""
       )}
     </div>

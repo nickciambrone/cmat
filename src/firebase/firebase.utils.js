@@ -47,3 +47,15 @@ export const getUsersClientCollecion =  async (email) => {
   return arr;
 
 }
+
+
+
+export const addClientToUser = async (
+  clientDetails, userEmail
+) => {
+
+  var now = new Date().toISOString();
+  console.log(now)
+
+  await setDoc(doc(db, "Users", userEmail, 'Clients',now), clientDetails);
+};
