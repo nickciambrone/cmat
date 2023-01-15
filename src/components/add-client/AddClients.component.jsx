@@ -11,8 +11,6 @@ const AddClients = ({  email}) => {
   const deleteAttribute = (i) => {
   let tempAttributes = clientDetails[0]
   let tempValues = clientDetails[1]
-  console.log(i)
-  console.log(tempAttributes)
   tempAttributes.splice(i,1)
   tempValues.splice(i,1)
   setClientDetails([tempAttributes, tempValues])
@@ -34,7 +32,6 @@ const AddClients = ({  email}) => {
       tempAttributes[ind] = event.target.value;
       setClientDetails([clientDetails[0], tempAttributes])
     }
-    console.log(clientDetails)
   }
   const handleSubmit = () => {
     let testObj = {}

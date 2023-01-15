@@ -36,7 +36,8 @@ export const MyClients = ({clients})=>{
           </div>
           <span>My Clients:</span>
 
-          {clients.map((ele, ind) => (
+          {clients.map((ele, ind) => {
+            return (
             <div
               style={{
                 display: "flex",
@@ -61,10 +62,10 @@ export const MyClients = ({clients})=>{
               </div>
               <div style={{ width: "20%", padding: "40px" }}>
                 {" "}
-                <span class="material-symbols-outlined">edit</span>
+                <span onClick={() => navigate("/dashboard/editclient/"+ele.now)} class="material-symbols-outlined" style={{color:'#dc1a21', cursor:'pointer'}}>edit</span>
               </div>
             </div>
-          ))}
+          )})}
         </div>
     )
 }

@@ -8,15 +8,14 @@ import { UserContext } from '../../contexts/user.context';
 import { useContext } from "react";
 
 const Dashboard = () =>{
-    const {operation} =useParams();
+    const {operation, element} =useParams();
     const {currentUser} = useContext(UserContext)
-    console.log(operation)
     return(
         <div className = 'dashboard'>
         {operation == 'open' ? <OpenRequests /> :
         operation == 'create' ? <CreateRequest /> :
         operation =='history' ? <RequestHistory />:
-        operation.includes('clients') ? <ManageClients user ={currentUser}/>: 'Home'
+        operation.includes('client') ? <ManageClients user ={currentUser}/>: 'Home'
     }
         
         </div>

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, doc, getDocs, setDoc, query } from "firebase/firestore";
+import { getFirestore, collection, doc, getDocs, setDoc, query , getDoc} from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -47,15 +47,24 @@ export const getUsersClientCollecion =  async (email) => {
   return arr;
 
 }
+export const getUsersClient =  async (email,id) => {
+  const docRef = doc(db, "Users", email, "Clients", id);
+  const docSnap = await getDoc(docRef);
 
+  if (docSnap.exists()) {
+    return(docSnap.data())
+  } else {
+    // doc.data() will be undefined in this case
+    return 'no doc'
+  }
+}
 
 
 export const addClientToUser = async (
   clientDetails, userEmail
 ) => {
 
-  var now = new Date().toISOString();
-  console.log(now)
+  var now = new Date().valueOf().toString();
 
-  await setDoc(doc(db, "Users", userEmail, 'Clients',now), clientDetails);
+  await setDoc(doc(db, "Users", userEmail, 'Clients',now), {...clientDetails, now});
 };

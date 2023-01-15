@@ -14,7 +14,8 @@ function App() {
       <div style={{marginLeft:'10%', width:'80%', marginTop:'10px'}}>
       <Routes>
         <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/dashboard/:operation" element={<Dashboard />} />
+        <Route path="/dashboard/:operation/" element={<Dashboard />} />
+        <Route path="/dashboard/:operation/:element" element={<Dashboard />} />
 
       </Routes>
       </div>
